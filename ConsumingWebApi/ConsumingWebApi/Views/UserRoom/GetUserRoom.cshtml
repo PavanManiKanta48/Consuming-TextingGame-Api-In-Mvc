@@ -1,0 +1,61 @@
+﻿
+<input type="text" id="RoomId" name="city" />
+<script type="text/javascript">
+    function CopyToLabel() {
+        //Reference the TextBox.
+        var txtName = document.getElementById("RoomId");
+        window.location.href = '@Url.Action("GetUserRoom", "UserRoom")?id=' + txtName.value;
+        //return false;
+    }
+</script>
+<input type="submit" value="Search" class="btn btn-primary" onclick="return CopyToLabel()" />
+@model IEnumerable<ConsumingWebApi.Models.UserRoom.GetUserRoom>
+
+@{
+    ViewData["Title"] = "GetUserRoom";
+}
+
+<h1>GetUserRoom</h1>
+
+<p>
+    <a asp-action="AddUsersToRoom">AddUsersToRoom</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a asp-action="DeleteUsersFromRoom">DeleteUsersFromRoom</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                  @* @using (Html.BeginForm("DelteUserFromRoom", "UserRoom", new { RoomId = item.RoomId }, FormMethod.Post)) ;
+                       {
+                        @Html.AntiForgeryToken();
+                        <input type="submit" value="Delete">
+                         }
+                  *@
+                    @*
+               @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })*@
+
+                    @Html.ActionLink("Delete", "DeleteUsersFromRoom", new {  RoomId=item.RoomId,UserId=item.UserId})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

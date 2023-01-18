@@ -1,0 +1,27 @@
+﻿@model ConsumingWebApi.Models.UserRoom.DeleteUserRoom
+
+@{
+    ViewData["Title"] = "DeleteUsersFromRoom";
+}
+
+<h1>DeleteUsersFromRoom</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DeleteUserRoom</h4>
+    <hr />
+    <div class="mb-3">
+    <label asp-for="RoomId"></label>
+    <input asp-for="RoomId"  class="form-control" />
+    </div>
+    <div class="mb-3">
+    <label asp-for="UserId"></label>
+    <input asp-for="UserId"  class="form-control" />
+    </div>
+   
+    <form asp-action="DeleteUsersFromRoom">
+      
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a asp-action="GetUserRoom">Back to GetUserRoom</a>
+    </form>
+</div>

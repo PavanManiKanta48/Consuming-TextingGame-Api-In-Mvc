@@ -1,0 +1,57 @@
+﻿<h3 align=center>Get Details Of UserRoom </h3>
+<p class="text-black">enter userid</p>
+<input type="text" id="RoomId" name="room" />
+<script type="text/javascript">
+    function CopyToLabel() {
+        //Reference the TextBox.
+        var txtName = document.getElementById("RoomId");        
+        window.location.href = '@Url.Action("GetMessages", "Message")?id=' + txtName.value;
+        //return false;
+    }
+</script>
+<input type="submit" value="Search" class="btn btn-primary" onclick="return CopyToLabel()" />
+@model IEnumerable<ConsumingWebApi.Models.Message.GetMessages>
+
+@{
+    ViewData["Title"] = "GetMessages";
+}
+
+<p>
+    <a asp-action="AddMessageToRoom">Send New Message</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+           @* <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

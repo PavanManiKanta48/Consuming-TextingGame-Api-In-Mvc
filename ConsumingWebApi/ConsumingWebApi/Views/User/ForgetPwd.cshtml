@@ -1,0 +1,33 @@
+﻿@model ConsumingWebApi.Models.User.ForgetPwd
+
+@{
+    ViewData["Title"] = "ForgetPwd";
+}
+<h1 align="center">ForgetPwd</h1>
+<hr />
+<div align="center">
+    <div class="col-md-4">
+        <form asp-action="ForgetPwd">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input placeholder="emailid"  type="email" asp-for="EmailId" class="form-control" required=""/>
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input  placeholder="password" type="Password" asp-for="Password" class="form-control" required="" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div align="justify">
+                <input type="submit" value="Save" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a asp-action="Login" class="btn btn-outline-secondary">Back to Login</a>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ConsumingWebApi.Models.User.GetUser>
+
+@{
+    ViewData["Title"] = "UserDetails";
+}
+
+<h1>UserDetails</h1>
+<div align="end">
+    <a asp-action="CreateRoom" asp-controller="Room" class="btn btn-outline-secondary">Goto Create Room</a>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </th>          
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+               
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailId)
+            </td>                      
+        </tr>
+            <tr>
+                <td>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,51 @@
+﻿<input type="text" id="userId" name="room" />
+<script type="text/javascript">
+    function CopyToLabel() {
+        //Reference the TextBox.
+        var txtName = document.getElementById("userId");
+        window.location.href = '@Url.Action("RoomDetails", "Room")?id=' + txtName.value;
+        //return false;
+    }
+</script>
+<input type="submit" value="Search" class="btn btn-primary" onclick="return CopyToLabel()" />
+@model IEnumerable<ConsumingWebApi.Models.Model.GetRoomResponse>
+
+@{
+    ViewData["Title"] = "RoomDetails";
+}
+
+<h1>RoomDetails</h1>
+
+<p>
+<a asp-action="CreateRoom" asp-controller="Room">Create New</a>
+<a style="display:block;text-align:end" asp-action="EditRoom" asp-controller="Room">Edit Room</a>
+    <a  asp-action="GetUserRoom" asp-controller="UserRoom">get UserRoom</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomName)
+            </th>           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomName)
+            </td> 
+                <td>
+                    @Html.ActionLink("Edit", "EditRoom", new {  id=item.RoomId  })
+                </td>
+        </tr>
+        
+}
+    </tbody>
+</table>

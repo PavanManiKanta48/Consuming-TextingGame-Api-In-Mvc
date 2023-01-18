@@ -1,0 +1,33 @@
+﻿@model ConsumingWebApi.Models.UserRoom.CreateUserRoom
+
+@{
+    ViewData["Title"] = "AddUsersToRoom";
+}
+
+<h1>AddUsersToRoom</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddUsersToRoom">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoomId" class="control-label"></label>
+                <input asp-for="RoomId" class="form-control" />
+                <span asp-validation-for="RoomId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input multiple asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
