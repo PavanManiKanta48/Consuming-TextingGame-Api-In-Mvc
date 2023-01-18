@@ -10,11 +10,14 @@ namespace ConsumingWebApi.Controllers
     public class UserController : Controller
     {
         private readonly ILogger<UserController> _logger;
+        private readonly HttpClient client;
         string Baseurl = "https://localhost:44388/api/";
+        public new const string SessionKey = "Token";
         private BaseResponse token;
         public UserController(ILogger<UserController> logger)
         {
             _logger = logger;
+            client = new HttpClient();
         }
 
         public ActionResult index()
@@ -29,10 +32,10 @@ namespace ConsumingWebApi.Controllers
         public async Task<ActionResult> UserDetails()
         {
             List<GetUser> EmpInfo = new List<GetUser>();
-            using (var client = new HttpClient())
-            {
-                //Passing service base url
-                client.BaseAddress = new Uri(Baseurl);
+            string? token = HttpContext.Session.GetString(SessionKey);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme: "Bearer", parameter: token);
+            //Passing service base url
+            client.BaseAddress = new Uri(Baseurl);
                 client.DefaultRequestHeaders.Clear();
                 //Define request data format
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -48,7 +51,7 @@ namespace ConsumingWebApi.Controllers
                 }
                 //returning the employee list to view
                 return View(EmpInfo);
-            }
+           
         }
         public ActionResult Register()
         {
@@ -85,7 +88,7 @@ namespace ConsumingWebApi.Controllers
         {
             try
             {
-                HttpClient client = new HttpClient();
+               // HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri(Baseurl);
                // LoginRequest log = new LoginRequest();
                 var postJob = client.PostAsJsonAsync<LoginRequest>("User/LogIn", user);
@@ -94,6 +97,7 @@ namespace ConsumingWebApi.Controllers
                 var resultMessage = postResult.Content.ReadAsStringAsync().Result;
                 token = JsonConvert.DeserializeObject<BaseResponse>(resultMessage)!;
                 //TempData["Token"] = token;
+                HttpContext.Session.SetString(SessionKey, token.Token!);
                 if (postResult.IsSuccessStatusCode)
                 {
                     if (token.StatusCode == System.Net.HttpStatusCode.OK)
@@ -122,8 +126,7 @@ namespace ConsumingWebApi.Controllers
         [HttpPost]
         public ActionResult ForgetPwd(RegisterUser forgetPwd)
         {
-            using (var client = new HttpClient())
-            {
+           
                 client.BaseAddress = new Uri(Baseurl + "User/ForgetPassword");
 
                 //HTTP POST
@@ -135,8 +138,7 @@ namespace ConsumingWebApi.Controllers
                 {
 
                     return RedirectToAction("Login");
-                }
-            }
+                }           
             return View(forgetPwd);
         }
 
