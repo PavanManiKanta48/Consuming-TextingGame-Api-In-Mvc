@@ -13,6 +13,7 @@ namespace ConsumingWebApi.Controllers
         string Baseurl = "https://localhost:44388/api/";
         private BaseResponse response;
         // GET: HomeController/Details/5
+        
         public ActionResult GetUserRoom()
         {
             return View();
@@ -60,7 +61,7 @@ namespace ConsumingWebApi.Controllers
                     var result = postTask.Result;
                     if (result.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("GetUserRoom");
+                        return RedirectToAction("Index", "Message");
                     }
                 }
 

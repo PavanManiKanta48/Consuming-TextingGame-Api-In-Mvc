@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ConsumingWebApi.Models.Model.GetRoomResponse>
+
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<h1 align="center" style="color:aqua">Rooms</h1>
+
+<table class="table table-bordered table-hover text-white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomName)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomName)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-action="Index" asp-controller="Room" class="btn btn-outline-light">Back</a>

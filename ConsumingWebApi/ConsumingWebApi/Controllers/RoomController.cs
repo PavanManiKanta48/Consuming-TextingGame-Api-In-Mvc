@@ -9,6 +9,28 @@ namespace ConsumingWebApi.Controllers
     public class RoomController : Controller
     {
         string Baseurl = "https://localhost:44388/api/";
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public async Task<ActionResult> Rooms()
+        {
+            List<GetRoomResponse> EmpInfo = new List<GetRoomResponse>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(Baseurl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage Res = await client.GetAsync("Room/GetRooms");
+
+                if (Res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+                    EmpInfo = JsonConvert.DeserializeObject<List<GetRoomResponse>>(EmpResponse)!;
+                }
+                return View(EmpInfo);
+            }
+        }
         public async Task<ActionResult> RoomDetails(int id)
         {
             List<GetRoomResponse> EmpInfo = new List<GetRoomResponse>();

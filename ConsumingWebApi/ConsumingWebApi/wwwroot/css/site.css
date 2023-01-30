@@ -14,5 +14,44 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url('../images/background.jpg');   
+    background-size: cover;
+    background-repeat: no-repeat repeat;
+}
+.image {
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)), url("../images/home.jpg");
+    /*background-image: url('../images/home.jpg');*/
+    background-size: cover;
+    background-repeat: no-repeat repeat;
+  height:max-content;
+  width:100%;
+}
+.roomImage {
+    background-image: url('../images/room2.png');
+    background-size: cover;
+    background-repeat: no-repeat repeat;
+}
+.game {
+    background-image: url('../images/keyboard.png');
+    background-size: cover;
+    background-repeat: no-repeat repeat;
+    outline: 15px solid rgba(192,192,192,0.3);
+    outline-offset: -15px;
+    /*transform: skew(-30deg);*/
+}
+.message {
+    background-image: url('../images/message.jpg');
+    background-size: cover;
+    background-repeat: no-repeat repeat;
+    outline: 15px solid rgba(192,192,192,0.3);
+    outline-offset: -15px;
+}
+.message-text {
+    background-image: url('../images/messagesbg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat repeat;
+    width: 380px;
+    height: 100vh;
+    background-repeat: no-repeat repeat;
 }

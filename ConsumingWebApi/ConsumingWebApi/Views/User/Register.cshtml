@@ -1,6 +1,64 @@
 ﻿@model ConsumingWebApi.Models.User.RegisterUser
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-@{
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form asp-action="Register">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input placeholder=" nickname" asp-for="Name" class="form-control" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input placeholder=" email@example.com" type="email" asp-for="EmailId" class="form-control" required="" />
+            <span asp-validation-for="EmailId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input placeholder=" password" type="password" asp-for="Password" class="form-control" required="*" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input placeholder=" mobile number" type="number" required asp-for="MobileNo" class="form-control" />
+            <span asp-validation-for="MobileNo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input placeholder=" confirm password" type="password" required asp-for="ConfirmPassword" class="form-control" required="*" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group" align="justify">
+            <input type="submit" value="Create" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a asp-action="Login" class="btn btn-outline-secondary" oninvalid="AnimationEffect">Back to Login</a>
+        </div>
+    </form>
+
+</body>
+</html>
+@section Scripts
+    {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+@*@{
     ViewData["Title"] = "Register";
 }
 
@@ -40,7 +98,6 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-   
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}   
 }
+*@

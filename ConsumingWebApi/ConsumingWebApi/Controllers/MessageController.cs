@@ -8,10 +8,10 @@ namespace ConsumingWebApi.Controllers
     public class MessageController : Controller
     {
         string Baseurl = "https://localhost:44388/api/";
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        public ActionResult Index()
+        {
+            return View();
+        }
         public async Task<ActionResult> GetMessages(int id)
         {
             List<GetMessages> MsgInfo = new List<GetMessages>();
@@ -47,7 +47,7 @@ namespace ConsumingWebApi.Controllers
                 {
                     client.BaseAddress = new Uri(Baseurl);
                     //HTTP POST
-                    var postTask = client.PostAsJsonAsync<CreateMessage>($"Message/AddUserMessage/{create.RoomId}&Message=hard%20coded%20value", create);
+                    var postTask = client.PostAsJsonAsync<CreateMessage>("Message/AddUserMessage/&Message=hard%20coded%20value", create);
                     postTask.Wait();
                     var result = postTask.Result;
                     if (result.IsSuccessStatusCode)

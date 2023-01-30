@@ -1,15 +1,16 @@
-﻿@model ConsumingWebApi.Models.User.GetUser
-
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
-
-<div>
-    <h4>GetUser</h4>
-    <hr />
-    <dl class="row">
+﻿@model Domain.UserModel.UserDetailsModel
+<link rel="stylesheet" href="~/css/ForgetPwd.css" asp-append-version="true" />
+<h1 align="center">User Details</h1>
+<div class="image rounded-3">
+  <div>       
+    
+    <dl class="row text-black">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.UserName)
         </dt>
@@ -28,9 +29,26 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MobileNo)
         </dd>
-    </dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+    </dl>        
+  </div>
+  <br />
+      <a asp-action="Index" class="btn btn-outline-success btn-lg ">Back </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a asp-action="RoomDetails" asp-controller="Room" class="btn btn-outline-primary btn-lg ">EXISTING ROOMS</a>
+    <br />
 </div>
+<br />
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a href="/Room/Index" title="Click here to visit room details">
+        <img src="~/Images/Room2.png" width="100%" height="200px" class="rounded-3"  alt="No Image" />
+    </a>
 </div>
+
+
+
+

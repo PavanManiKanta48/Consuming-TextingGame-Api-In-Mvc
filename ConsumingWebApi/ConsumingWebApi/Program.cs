@@ -8,7 +8,7 @@ builder.Services.AddMvc()
 .AddNewtonsoftJson(options =>
        options.SerializerSettings.ContractResolver =
           new CamelCasePropertyNamesContractResolver());
- builder.Services.AddSession(options =>
+builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(100);
     options.Cookie.HttpOnly = true;
@@ -42,6 +42,6 @@ app.UseAuthorization();
 app.UseSession();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=User}/{action=index}/{id?}");
+    pattern: "{controller=Room}/{action=Index}/{id?}");
 
 app.Run();

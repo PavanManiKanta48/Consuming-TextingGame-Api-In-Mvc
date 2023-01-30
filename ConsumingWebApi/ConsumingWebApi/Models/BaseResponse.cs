@@ -4,6 +4,7 @@ namespace ConsumingWebApi.Models
 {
     public class BaseResponse
     {
+        public int? id { get; set; }
         public int userId { get; set; }
         public string? Token { get; set; }
         public string SuccessMessage { get; set; }

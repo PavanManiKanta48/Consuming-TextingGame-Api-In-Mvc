@@ -1,27 +1,26 @@
-﻿<input type="text" id="userId" name="room" />
-<script type="text/javascript">
-    function CopyToLabel() {
-        //Reference the TextBox.
-        var txtName = document.getElementById("userId");
-        window.location.href = '@Url.Action("RoomDetails", "Room")?id=' + txtName.value;
-        //return false;
-    }
-</script>
-<input type="submit" value="Search" class="btn btn-primary" onclick="return CopyToLabel()" />
+﻿<h1 align="center ">RoomDetails</h1>
+<div >
+    <p>Enter Your Id</p>
+    <input type="text" id="userId"/>
+    <script type="text/javascript">
+        function CopyToLabel() {
+            //Reference the TextBox.
+            var txtName = document.getElementById("userId");
+            window.location.href = '@Url.Action("RoomDetails", "Room")?id=' + txtName.value;
+            //return false;
+        }
+    </script>
+    <input type="submit" value="Search" class="btn btn-primary" onclick="return CopyToLabel()" />
+</div>
+
 @model IEnumerable<ConsumingWebApi.Models.Model.GetRoomResponse>
 
-@{
-    ViewData["Title"] = "RoomDetails";
-}
-
-<h1>RoomDetails</h1>
-
 <p>
-<a asp-action="CreateRoom" asp-controller="Room">Create New</a>
-<a style="display:block;text-align:end" asp-action="EditRoom" asp-controller="Room">Edit Room</a>
+@*<a asp-action="CreateRoom" asp-controller="Room">Create New</a>
+<a style="display:block;text-align:end" asp-action="EditRoom" asp-controller="Room">Edit Room</a
     <a  asp-action="GetUserRoom" asp-controller="UserRoom">get UserRoom</a>
-</p>
-<table class="table table-bordered">
+    </p>>*@
+<table class="table table-hover table- text-white border border-warning">
     <thead>
         <tr>
             <th>
@@ -29,11 +28,16 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.RoomName)
-            </th>           
+            </th>
+                <th>
+                    Action
+                </th>
+            </tr>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model) 
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.RoomId)
@@ -41,11 +45,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RoomName)
             </td> 
+
                 <td>
-                    @Html.ActionLink("Edit", "EditRoom", new {  id=item.RoomId  })
+                <button class="btn btn-info">
+                            @Html.ActionLink("Edit", "EditRoom", new {  id=item.RoomId  })
+                </button>                   
                 </td>
-        </tr>
-        
+        </tr>     
 }
     </tbody>
 </table>
+    <a asp-action="Details" asp-controller="User" class="btn btn-warning">Go Back</a>

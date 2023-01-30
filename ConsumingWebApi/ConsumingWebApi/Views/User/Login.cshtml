@@ -1,16 +1,57 @@
 ﻿@model ConsumingWebApi.Models.User.LoginRequest
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ForgetPwd.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+     
+</head>
+<body>
 
-@{
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div>
+     <form asp-action="Login">
+        <h3>Login Here</h3>
+        <div asp-validation-summary="ModelOnly" class="text-warning"></div>
+        <div class="form-group">
+            <input type="email" asp-for="EmailId" placeholder="email@example.com" class="form-control" required="" />
+            <span asp-validation-for="EmailId" class="text-warning"></span>
+        </div>
+        <div class="form-group">
+            <input type="password" asp-for="Password" placeholder="password" class="form-control" required="" />
+            <span asp-validation-for="Password" class="text-warning"></span>
+        </div>
+        <br />
+        <div class="form-group" align="justify">
+            <input type="submit" value="Login" class="btn btn-primary" />     
+        </div>
+        <br />            
+        <a asp-action="ForgetPwd" class="link-light">Forget Password</a>
+    </form>
+    </div>
+           
+</body>
+</html>
+
+
+
+@*@{
     ViewData["Title"] = "Login";
 }
 
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-<div style="width:100%; height: 600px; background="/Images/Home.jpg";">
-
-<div id="container">
-      @*  <div style="width:100%; height: 120px; background-color:aqua;">
-        </div>*@
-<h1 align="center">Login</h1>
+<div style="width:100%; height: 120px;">
+</div>
+<div>           
+        <h1 align="center" class="link-light" clas>Login</h1>
     <div align="center" >
         <div class="col-md-4">                
             <form asp-action="Login">                    
@@ -27,27 +68,23 @@
                 </div>
                 <div class="form-group" align="justify">
                     <input type="submit" value="Login" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a asp-action="ForgetPwd" id="p1">Forget Password</a>
-
+                    <a asp-action="ForgetPwd" class="link-light">Forget Password</a>
                 </div>
             </form>
-            <br />
-           @* <p id="p2">Don't have an account? <a asp-action="Register">Register</a></p>*@
+            <br />         
         </div>   
     </div>
-</div>
-</div>
+        
+ </div>*@
 
 
 
 
-@section Scripts {
+
+@section Scripts
+{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script>
-        document.getElementById("p2").style.color = "purple";
-        document.getElementById("p1").style.color = "LightSeaGreen";
-        document.getElementById("p3").style.color = "red";
-    </script>
+  
      
 }
 

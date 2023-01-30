@@ -1,5 +1,5 @@
-﻿<h3 align=center>Get Details Of UserRoom </h3>
-<p class="text-black">enter userid</p>
+﻿<h3 align=center> </h3>
+<p class="text-black">enter your Roomid</p>
 <input type="text" id="RoomId" name="room" />
 <script type="text/javascript">
     function CopyToLabel() {
@@ -10,48 +10,32 @@
     }
 </script>
 <input type="submit" value="Search" class="btn btn-primary" onclick="return CopyToLabel()" />
+
 @model IEnumerable<ConsumingWebApi.Models.Message.GetMessages>
 
-@{
-    ViewData["Title"] = "GetMessages";
-}
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div class="message-text rounded-3">
+    <table >
 
-<p>
-    <a asp-action="AddMessageToRoom">Send New Message</a>
-</p>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Timestamp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Message)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Timestamp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Message)
-            </td>
-           @* <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>*@
-        </tr>
-}
-    </tbody>
-</table>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="input-group-text py-3 my-3 px-4 px-lg-5 d-flex ">
+                        @Html.DisplayFor(modelItem => item.Timestamp)-
+                    <br>
+                        @Html.DisplayFor(modelItem => item.FirstName)-
+                    <br>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <br />
+    <br />
+    <br /><br />   
+</div>
+<a asp-action="Index" asp-controller="Message" class="btn btn-dark">Back</a>
+

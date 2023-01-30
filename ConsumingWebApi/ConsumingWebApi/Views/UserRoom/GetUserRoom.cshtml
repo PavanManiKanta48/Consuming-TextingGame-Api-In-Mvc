@@ -18,8 +18,8 @@
 <h1>GetUserRoom</h1>
 
 <p>
-    <a asp-action="AddUsersToRoom">AddUsersToRoom</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a asp-action="DeleteUsersFromRoom">DeleteUsersFromRoom</a>
+    <a asp-action="AddUsersToRoom" class="btn btn-primary">AddUsersToRoom</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   @* <a asp-action="DeleteUsersFromRoom">DeleteUsersFromRoom</a>*@
 </p>
 <table class="table table-bordered">
     <thead>
@@ -30,7 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserId)
             </th>
-            <th></th>
+            <th>
+                
+            </th>
         </tr>
     </thead>
     <tbody>
