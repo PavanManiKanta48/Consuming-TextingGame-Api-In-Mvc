@@ -8,8 +8,8 @@
 }
 
 body {
-    background-color: #080710;
-}
+    background-image: url('../images/login.jpg');
+    }
 
 .background {
     width: 430px;

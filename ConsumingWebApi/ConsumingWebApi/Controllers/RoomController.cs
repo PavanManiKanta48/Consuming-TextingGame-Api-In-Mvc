@@ -67,7 +67,7 @@ namespace ConsumingWebApi.Controllers
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("RoomDetails");
+                    return RedirectToAction("Index");
                 }
             }
 

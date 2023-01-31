@@ -4,8 +4,7 @@
 <head>
     <!-- Design by foolishdeveloper.com -->
     <title>Glassmorphism login Form Tutorial in html css</title>
-    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/ForgetPwd.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />   
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -14,8 +13,8 @@
 <body>
 
     <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
+        @*<div class="shape"></div>
+        <div class="shape"></div>*@
     </div>
     <div>
      <form asp-action="Login">
@@ -40,47 +39,6 @@
            
 </body>
 </html>
-
-
-
-@*@{
-    ViewData["Title"] = "Login";
-}
-
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-<div style="width:100%; height: 120px;">
-</div>
-<div>           
-        <h1 align="center" class="link-light" clas>Login</h1>
-    <div align="center" >
-        <div class="col-md-4">                
-            <form asp-action="Login">                    
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <input type="email" asp-for="EmailId" placeholder="email@example.com" class="form-control" required />
-                    <span asp-validation-for="EmailId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="password" asp-for="Password" placeholder="password" class="form-control" required="" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div style="text-align:end">
-                </div>
-                <div class="form-group" align="justify">
-                    <input type="submit" value="Login" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a asp-action="ForgetPwd" class="link-light">Forget Password</a>
-                </div>
-            </form>
-            <br />         
-        </div>   
-    </div>
-        
- </div>*@
-
-
-
-
-
 @section Scripts
 {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
